@@ -1,0 +1,82 @@
+<!-- HTML5文件 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>html title</title>
+
+		<link rel="stylesheet" href="../assets/agile/css/agile.layout.css">
+		<link rel="stylesheet" href="../assets/third/seedsui/plugin/seedsui/seedsui.min.css">
+		<link rel="stylesheet" href="../assets/third/seedsui/plugin/animate/animate.css">
+		<style>
+			.titlebar,.tab.active{
+				background-color:#18B2ED;
+			}
+			.titlebar h1,.tab.active label{
+				font-weight:bold;
+				color:white;
+			}
+			.titlebar a i,.titlebar a label{
+				color:white;
+			}
+			.art_mid{
+				top:45px;
+				bottom:40px
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="section_container">
+		 <section id="sectionid" data-role="section" class="active">
+		 	<header>
+		 		<div class="titlebar" >
+		 			<a class="left">
+		 				<label class="bold"><i class="icon icon-arrowleft-fill"></i>登出</label>
+		 			</a>
+		 			<h1 class="text-center ">首页</h2>
+		 			<a class="right">
+		 				<i class="icon icon-menu-fill"></i>
+		 			</a>
+		 		</div>
+		 	</header>
+		 	<article id="article_main" data-role="article" data-transition="slide" data-scroll="verticle" class="active art_mid" >
+		 		<div class="scroller">
+		 			pagemain
+		 		</div>
+		 	</article>
+		 	<article id="article_serv"  data-role="article" data-transition="slide" data-scroll="verticle" class="art_mid" >
+		 		<div class="scroller">
+		 			pageserv
+		 		</div>
+		 	</article>
+		 	<article id="article_conf" data-role="article" data-transition="slide" data-scroll="verticle" class="art_mid" >
+		 		<div class="scroller">
+		 			pageconfig
+		 		</div>
+		 	</article>
+		 	<footer>
+				<ul class="menubar" style="line-height: 40px;">
+					<li class="tab active" data-role="tab" href="#article_main" data-toggle="article">
+						<label class="text-center">首页</label>
+					</li>
+					<li class="tab " data-role="tab"  href="#article_serv" data-toggle="article">
+						<label class="text-center">服务</label>
+					</li>
+					<li class="tab " data-role="tab"  href="#article_conf" data-toggle="article">
+						<label class="text-center">设置</label>
+					</li>
+				</ul>
+		 	</footer>
+		 </section>
+		</div>
+		<script src="../assets/third/amd/require.js" ></script>
+		<script src="../assets/app/js/app.require.js"></script>
+		<script>
+		 require(['vue','agile'],function(Vue){
+		 });
+		</script>
+	</body>
+</html>
