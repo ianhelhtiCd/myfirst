@@ -5,5 +5,11 @@
   <config>
     <htmlformat wellformat="true" />
     <filepreviewconfig wordtohtml="true"/>
+    <database id="momis" user="longjian2" password="scmis*08" 
+     maxconn="10" minconn="2" defconn="5" dbtype="mssqlserver" 
+     ip="127.0.0.1" dbname="momis" port="1433"/>
   </config>
+	<services>
+		<http-service-ext extfile="myfirst.ac" />
+	</services>
 </maxml>

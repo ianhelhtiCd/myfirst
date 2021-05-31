@@ -14,7 +14,7 @@
 		<style>
 			.tab{
 				height:45px;
-				font-size:18px;
+				font-size:1em;
 				line-height:40px;
 				color:silver
 			}
@@ -38,7 +38,7 @@
 					<a class="right" ><i class="icon-menu-fill size28"></i></a>
 				</div>
 			</header>
-			<article id="main_article" data-transition="slide"  data-role="article" class="" style="top:45;bottom:40;">
+			<article id="main_article" data-transition="slide"  data-role="article" class="active" style="top:45;bottom:40;">
 				<div id="main_list" data-scroll="pull" style="height:200px">
 				<div class="scroller">
 						<ul >
@@ -122,9 +122,9 @@
 					</div>
 				</div>
 			</article>
-			<article id="page3_article" data-transition="slide"  data-role="article" class="active" style="top:45;bottom:40;">
-				<span class="button block bg-8" id="load">点我加载</span>
-				<div id="page3_lst" data-scroll="verticle" style="height:300px">
+			<article id="page3_article" data-transition="slide"  data-role="article" class="" style="top:45;bottom:40;">
+				<span class="button block bg-8" id="load" >点我加载</span>
+				<div id="page3_lst" data-scroll="verticle" style="height:300px;border:1px solid;">
 					<div class="scroller">
 						<ul id="lstmain">
 							<li style="padding:10px">
@@ -144,6 +144,7 @@
 						</ul>
 					</div>
 				</div>
+				
 			</article>
 			<footer>
 				<ul class="menubar">
@@ -226,7 +227,7 @@
 				//$('#lstmain').append(html);
 				//A.Scroll('#page3_lst').refresh();
 				
-				A.template('#lst_temp').renderReplace(json,function(h){
+				A.template('#lst_temp').renderAfter(json,function(h){
 					A.Scroll('#page3_lst').refresh();
 				});
 			});

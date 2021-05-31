@@ -5,7 +5,7 @@
   <description></description>
   <version>1.0.0</version>
   <date>2017-03-09</date>
-  <homepage src="res:page/hellowWorld.uixml"/>
+  <homepage src="res:page/main.uixml"/>
   <faultconfig src=""/>
   <access network="true" gps="true" camera="true" certificate="true" land="false" orientation="port"/>
   <vendor email="" url=""/>

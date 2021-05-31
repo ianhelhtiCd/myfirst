@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<maxml-api xsi:schemaLocation="http://www.nj.fiberhome.com.cn/map ../../../maxml-api-2.0.xsd" xmlns="http://www.nj.fiberhome.com.cn/map" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <http-service id="myfirst" isrest="true" name="myfirst">
+        <forward method="get" name="getItem_DB" path="getItem_DB.jsp" pattern="/getItem_DB"/>
+    </http-service>
+</maxml-api>
