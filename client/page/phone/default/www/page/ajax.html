@@ -1,0 +1,166 @@
+<!-- HTML5文件 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, 
+		initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../assets/agile/css/agile.layout.css">
+		<link rel="stylesheet" href="../assets/third/seedsui/plugin/seedsui/seedsui.min.css">
+		<style>
+			.tab{
+				line-height:40px;
+				color:silver;
+			}
+			.tab.active{
+				color:white;
+				background-color:#18B2ED;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="section_container">
+			<section id="main_section" data-role="section" class="active">
+				<header>
+					<div class="titlebar text-center">
+						<h2>欢迎</h2>
+					</div>
+				</header>
+				<article id="main" data-transition="slide" data-role="article" class="active">
+					<span id="button1" class="button bg-8 block">获取数据</span>
+					<br />
+					<span id="button2" class="button bg-6 block">https</span>
+					<br />
+					<div id="main_list" data-scroll="pull" style="height:300px;border:1px solid">
+				    <div class="scroller">
+							<li style="padding:10px">
+								<div style="height:10px;line-height:25px" class="color-9">可见样例</div><br/>
+								<small class="color-9">我是副标题</small>
+							</li>
+							<script id="lst_temp" type="text/html">
+							 <%for(var i=0;i<list.length;i++){%>	
+							  <li style="padding:10px">
+							  	<div style="height:10px;line-height:25px">
+							  		[<%=i%>]<%=list[i].object_name%></div>
+							  		<br/>
+							  	<small><%=list[i].company_name%></small>
+							  </li>
+							  <%}%>
+							</script>
+				    </div>
+				    </div>
+				</article>
+				<article id="page2" data-transition="slide" data-role="article" class="">
+					page2
+				</article>
+				<article id="page3" data-transition="slide" data-role="article" class="">
+					page3
+				</article>
+				<footer>
+					<ul class="menubar">
+						<li class="tab active" data-role="tab" data-toggle="article" href="#main">
+							<label>首页</label>
+						</li>
+						<li class="tab "  data-role="tab" data-toggle="article" href="#page2">
+							<label>page2</label>
+						</li>
+						<li class="tab " data-role="tab" data-toggle="article" href="#page3">
+							<label>page3</label>
+						</li>
+					</ul>
+				</footer>
+			</section>
+		</div>
+		<script src="../assets/third/jquery/jquery-2.1.3.min.js"></script>
+		<script src="../assets/third/jquery/jquery.mobile.custom.min.js"></script>
+		<script src="../assets/third/arttemplate/template-native.js"></script>
+		<script src="../assets/third/seedsui/plugin/seedsui/seedsui.min.js"></script>
+		<script src="../assets/third/iscroll/iscroll-probe.js"></script>
+		<script src="../assets/agile/js/agile.js"></script>
+		<script src="../assets/app/js/app.seedsui.js"></script>
+		<script src="../assets/bridge/exmobi.js"></script>
+		<script>
+			$(function(){
+				$('#button1').on("tap",function(){
+					getData();
+				})
+				
+				var getData = function(){
+					//获取数据
+			        var json = {};
+				    $.ajax({
+				    	url:'http://172.16.5.31:8001/process/service/myfirst/getItem_DB',
+				    	async:'true',
+				    	type:'get',
+				    	jsonp:'callback',
+				    	dataType:'jsonp',
+				    	success:function(data){
+				    		json.list = data.list;
+				    		//alert(JSON.stringify(json.list))
+				            A.template('#lst_temp').renderAfter(json,function(h){
+				            	A.Scroll('#main_list').refresh();
+				            });
+				    	},
+				    	error:function(data){
+				    		alert('error')
+				    	}
+				    });
+				}
+				
+				
+				//$('#button2').on("tap",function(){
+					////获取数据
+			        //var json = {};
+				    //$.ajax({
+				    	//url:'https://172.16.5.31:8443/process/service/myfirst/getItem_DB',
+				    	//async:'true',
+				    	//type:'get',
+				    	//jsonp:'callback',
+				    	//dataType:'jsonp',
+				    	//success:function(data){
+				    		//json.list = data.list;
+				    		////alert(JSON.stringify(json.list))
+				            //A.template('#lst_temp').renderAfter(json,function(h){
+				            	//A.Scroll('#main_list').refresh();
+				            //});
+				    	//},
+				    	//error:function(data){
+				    		//alert('error')
+				    		////alert(JSON.stringify(data))
+				    	//}
+				    //});
+				//})
+			})
+			
+			
+		    $(document).on('plusready',function(){
+		    	alert('exmobi ready')
+		    	
+				$('#button2').on("tap",function(){
+					//获取数据
+			        var json = {};
+				    $util.ajax({
+				    	url:'https://172.16.5.31:8443/process/service/myfirst/getItem_DB',
+				    	isBlock:'true',
+				    	type:'get',
+				    	data:'',
+				    	success:function(data){
+				    		json = eval('('+data+')');
+				    		alert(JSON.stringify(json))
+				            A.template('#lst_temp').renderAfter(json,function(h){
+				            	A.Scroll('#main_list').refresh();
+				            });
+				    	},
+				    	error:function(data){
+				    		alert('error')
+				    		//alert(JSON.stringify(data))
+				    	}
+				    });
+				})
+		    	
+		    })
+		</script>
+	</body>
+</html>
