@@ -26,14 +26,92 @@
 						<h2>hellow</h2>
 					</div>
 				</header>
-				<article id="article1" data-transition="slide" data-role="article" class="active">
-					main
+				<article id="article1" data-transition="slide" data-scroll="verticle" data-role="article" class="">
+					<div class="scroller">
+							<ul class="list">
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+							</ul>
+						</div>
 				</article>
 				<article id="article2" data-transition="slide" data-role="article" class="" >
-					page2
+					<div id="list_main" data-scroll="pulldown" style="height:300px">
+					<div class="scroller">
+							<ul id="list_cont"  class="list">
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</article>
-				<article id="article3" data-transition="slide" data-role="article" class="">
-					page3
+				<article id="article3" data-transition="slide" data-role="article" class="active">
+					
+					<div id="list_main2" data-scroll="pulldown" style="height:300px">
+					<div class="scroller">
+						<span id="but" class="button bg-6 block">按键</span><br />
+							<ul id="list_cont2"  class="list">
+								<li>
+									<div style="height:50px"> <span>我是主标题</span></div>
+								</li>
+								<script id="template" type="text/html">
+									<% for(var i=0;i<listdata.length;i++){
+										%>
+								       <li>
+								       	<div style="height:50px">
+								       		 <span style="font-size:1em">[<%=listdata[i].idx%>]<%=listdata[i].title%></span><br>
+								       		 <span style="font-size:0.6em;color:sliver"><%=listdata[i].sub_title%></span>
+								       		 </div>
+								       </li>
+									<%
+									}%>
+								</script>
+							</ul>
+						</div>
+					</div>
 				</article>
 				<footer>
 					<ul class="menubar">
@@ -57,5 +135,47 @@
 		<script src="../assets/third/iscroll/iscroll-probe.js"></script>
 		<script src="../assets/agile/js/agile.js"></script>
 		<script src="../assets/app/js/app.seedsui.js"></script>
+		<script>
+			$(function(){
+				//A.Scroll('#list_main').refresh();
+				
+				$('#list_main').on('refreshInit',function(){
+					var refresh = A.Refresh(this)
+					refresh.on('pulldown',function(){
+						alert('下拉事件！')
+						var html='<li>\
+									<div style="height:50px"> <span class="color-9">我来自上边，新的</span></div>\
+								</li>';
+						$('#list_cont').prepend(html)
+						refresh.refresh();
+					})
+					
+					
+					refresh.on('pullup',function(){
+						alert('上拉事件！')
+					})
+				})
+				
+				$('#but').on('click',function(){
+					var json={};
+					json.listdata = [];
+					var idx = 0;
+					for(var i=0;i<4;i++){
+					var item = {title:"主标题",sub_title:"副标题"}
+						item.idx = i;
+						json.listdata.push(item);
+						idx++;
+					}
+					
+					//var html = A.template('#template').render(json)
+					//$('#list_cont2').append(html);
+					
+					A.template('#template').renderReplace(json,function(h){
+						;
+					})
+					
+				})
+			})
+		</script>
 	</body>
 </html>

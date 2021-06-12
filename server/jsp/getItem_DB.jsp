@@ -27,7 +27,7 @@
 	  oj.put("ret", "ok");
 	  
    System.out.println(oj.toString());
-   String recalll = aa.req.getParameter("callback");
-   outstr = jsonp(recalll,oj.toString());
+   String recall = aa.req.getParameter("callback");
+   outstr = jsonp(recall,oj.toString());
    out.print(outstr);
 %>

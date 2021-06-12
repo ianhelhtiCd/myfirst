@@ -91,14 +91,15 @@
 					//获取数据
 			        var json = {};
 				    $.ajax({
-				    	url:'http://172.16.5.31:8001/process/service/myfirst/getItem_DB',
+				    	url:'http://172.16.4.74:8001/process/service/myfirst/getItem_DB',
+				    	//url:'https://172.16.5.31:8443/process/service/myfirst/getItem_DB',
 				    	async:'true',
 				    	type:'get',
+				    	//dataType:'json',
 				    	jsonp:'callback',
 				    	dataType:'jsonp',
 				    	success:function(data){
 				    		json.list = data.list;
-				    		//alert(JSON.stringify(json.list))
 				            A.template('#lst_temp').renderAfter(json,function(h){
 				            	A.Scroll('#main_list').refresh();
 				            });
@@ -109,29 +110,6 @@
 				    });
 				}
 				
-				
-				//$('#button2').on("tap",function(){
-					////获取数据
-			        //var json = {};
-				    //$.ajax({
-				    	//url:'https://172.16.5.31:8443/process/service/myfirst/getItem_DB',
-				    	//async:'true',
-				    	//type:'get',
-				    	//jsonp:'callback',
-				    	//dataType:'jsonp',
-				    	//success:function(data){
-				    		//json.list = data.list;
-				    		////alert(JSON.stringify(json.list))
-				            //A.template('#lst_temp').renderAfter(json,function(h){
-				            	//A.Scroll('#main_list').refresh();
-				            //});
-				    	//},
-				    	//error:function(data){
-				    		//alert('error')
-				    		////alert(JSON.stringify(data))
-				    	//}
-				    //});
-				//})
 			})
 			
 			
